@@ -1,0 +1,56 @@
+@extends('layouts.frame')
+@section('content')
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 bg-light p-4 rounded-3">
+            <h1 style="font-weight: bold; display: flex; justify-content: center; align-self: center">Tambah Buku</h1>
+            <br>
+
+            <form action="{{ route('createBook')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+
+                <div class="mb-3">
+                    <label for="judul" class="form-label" style="font-weight: bold">Judul</label>
+                    <input name="judul" type="text" class="form-control" id="formGroupExampleInput"
+                        placeholder="Input Judul Buku">
+                </div>
+                @error('judul')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <div class="mb-3">
+                    <label for="penulis" class="form-label" style="font-weight: bold">Penulis</label>
+                    <input name='penulis' type="text" class="form-control" id="formGroupExampleInput"
+                        placeholder="Input Nama Penulis">
+                </div>
+                @error('penulis')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <div class="mb-3">
+                    <label for="jumlah_halaman" class="form-label" style="font-weight: bold">Jumlah Halaman</label>
+                    <input name='jumlah_halaman' type="numeric" class="form-control" id="formGroupExampleInput"
+                        placeholder="Input Jumlah Halaman">
+                </div>
+                @error('jumlah_halaman')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <div class="mb-3">
+                    <label for="tahun_terbit" class="form-label" style="font-weight: bold">Tahun Terbit</label>
+                    <input name='tahun_terbit' type="numeric" class="form-control" id="formGroupExampleInput"
+                        placeholder="Input Tahun Terbit">
+                </div>
+                @error('tahun_terbit')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <div style="display: flex; justify-content: center; align-self: center;"">
+                    <button class=" btn btn-success p-2 px-3" type="submit" style="font-weight: bold">
+                    <b>Create</b></button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+@endsection
